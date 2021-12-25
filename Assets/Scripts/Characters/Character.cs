@@ -24,4 +24,9 @@ public class Character : MonoBehaviour {
     protected virtual void Walk() { }
 
     protected virtual void Run() { }
+
+    public virtual void Die() {
+        state = CharacterState.Dead;
+        animationController.Death();
+    }
 }

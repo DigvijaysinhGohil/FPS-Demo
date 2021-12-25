@@ -14,6 +14,7 @@ public class PlayerController : Character {
     [SerializeField] private float maxLookYClamp = 90f;
 
     [Space, SerializeField] private Transform eyesTransform;
+    [SerializeField] private Transform head;
 
     private void Awake() {
         inputControls = new InputControls();
@@ -48,6 +49,9 @@ public class PlayerController : Character {
     }
 
     private void ReadMoveDelta(InputAction.CallbackContext context) {
+        if (state == CharacterState.Dead)
+            return;
+        
         Vector2 delta = context.ReadValue<Vector2>();
         moveDelta.x = delta.x;
         moveDelta.z = delta.y;
@@ -97,5 +101,10 @@ public class PlayerController : Character {
         eyesTransform.localRotation = Quaternion.Slerp(eyesTransform.localRotation, newRotation, lerpSpeed);
         newRotation = Quaternion.Euler(0, lookDelta.y, 0);
         rigidBody.MoveRotation(newRotation);
+    }
+
+    public override void Die() {
+        eyesTransform.SetParent(head);
+        base.Die();
     }
 }

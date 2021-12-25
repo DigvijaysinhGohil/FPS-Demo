@@ -444,6 +444,55 @@ Transform:
   m_Father: {fileID: 153850182}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &53045587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 53045588}
+  - component: {fileID: 53045589}
+  m_Layer: 0
+  m_Name: TurrentsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &53045588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53045587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131997833}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &53045589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53045587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f32ad6ef85bbd4ca43fa0ae0a86a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minThreshold: 0.3
+  maxThreshold: 0.5
+  lightsController: {fileID: 783877565}
+  lightTimer: {fileID: 783877566}
+  targets: []
 --- !u!1 &58691481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1293,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 653260038}
+  - {fileID: 53045588}
+  - {fileID: 864573046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1545,7 +1596,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 160874126}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &160874126
@@ -2170,7 +2221,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 246413567}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &246413567
@@ -3309,7 +3360,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 421498737}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &421498737
@@ -3882,7 +3933,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 493614631}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &493614631
@@ -4512,7 +4563,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 603727299}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &603727299
@@ -5070,7 +5121,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 669193171}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &669193171
@@ -5466,7 +5517,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 692227170}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &692227170
@@ -6091,8 +6142,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764162223}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.11, z: -22.5053}
-  m_LocalScale: {x: 50, y: 4.9906, z: 1}
+  m_LocalPosition: {x: 0, y: 0.11, z: -21.7063}
+  m_LocalScale: {x: 50, y: 6.58859, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4527368225819680}
@@ -6175,6 +6226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5af4c0115c4ca64c8041e2fb0c80144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretsController: {fileID: 53045589}
 --- !u!1 &766750364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6785,6 +6837,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851002404}
   m_Mesh: {fileID: 4300360, guid: 3cefbbfe8c81fbb4283daa116169ef21, type: 3}
+--- !u!1 &864573045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864573046}
+  - component: {fileID: 864573047}
+  m_Layer: 0
+  m_Name: CursorVisibility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &864573046
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864573045}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 131997833}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &864573047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864573045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f7cf15490ae91b428fdb0529d8e730b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &866811671
 GameObject:
   m_ObjectHideFlags: 0
@@ -8782,7 +8878,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1142583596}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &1142583596
@@ -10639,7 +10735,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1353439778}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &1353439778
@@ -11648,7 +11744,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1528431878}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &1528431878
@@ -12782,7 +12878,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1677753327}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!1 &1681222395
@@ -13767,7 +13863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fce6dbb364899a459739b46ba2d94a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 120
+  duration: 80
   remainingTime: 0
   OnTimerExpire:
     m_PersistentCalls:
@@ -13788,6 +13884,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 53045589}
+        m_TargetAssemblyTypeName: TurretsController, Assembly-CSharp
+        m_MethodName: KillAll
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14641,7 +14749,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1934366151}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &1934366151
@@ -15111,7 +15219,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 1979263689}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!114 &1979263689
@@ -18149,7 +18257,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 3469527277666327968}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!137 &3862273145753292183
@@ -19219,7 +19327,7 @@ MonoBehaviour:
   state: 0
   animationController: {fileID: 3862273145766887796}
   minReactionTime: 0.3
-  maxReactionTime: 0.6
+  maxReactionTime: 0.4
   lightsController: {fileID: 783877565}
   safetyState: 1
 --- !u!1 &3862273145766887805
@@ -20447,6 +20555,7 @@ MonoBehaviour:
   minLookYClamp: -90
   maxLookYClamp: 80
   eyesTransform: {fileID: 1687258585}
+  head: {fileID: 7447163604849191902}
 --- !u!54 &7447163604858962597
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@
             <e p="SafetyState.cs" t="Include" />
           </e>
           <e p="Helper" t="Include">
+            <e p="CursorVisibility.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
           <e p="RedLightGreenLight" t="Include">
@@ -27,6 +28,7 @@
             <e p="LightsController.cs" t="Include" />
             <e p="RedLightGreenLightBotController.cs" t="Include" />
             <e p="SafeZone.cs" t="Include" />
+            <e p="TurretsController.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">

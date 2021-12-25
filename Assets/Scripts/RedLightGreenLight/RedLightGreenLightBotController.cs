@@ -29,7 +29,6 @@ public class RedLightGreenLightBotController : Character {
     protected void FixedUpdate() {
         if (state != CharacterState.Dead) {
             base.FixedUpdate();
-
             Run();
         }
     }
@@ -52,18 +51,20 @@ public class RedLightGreenLightBotController : Character {
     protected override void Run() {
         Vector3 runForce = Vector3.zero;
 
-        if (state == CharacterState.Run) {
-            runForce.z = mass * runSpeed * Time.fixedDeltaTime;
-        }
-
         if (state == CharacterState.Idle) {
             animationController.Idle();
         }
-        else {
+        else if (state == CharacterState.Run) {
+            runForce.z = mass * runSpeed * Time.fixedDeltaTime;
             float direction = 1;
             animationController.Run(direction);
         }
 
         rigidBody.AddRelativeForce(runForce, ForceMode.VelocityChange);
+    }
+
+    public override void Die() {
+        base.Die();
+        safetyState = SafetyState.Safe;
     }
 }

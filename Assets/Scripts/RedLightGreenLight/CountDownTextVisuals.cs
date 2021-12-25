@@ -14,9 +14,15 @@ public class CountDownTextVisuals : MonoBehaviour {
     }
 
     private void SetTimeVisuals() {
-        int seconds = (int) (timer.remainingTime % 60);
-        int minutes = (int) (timer.remainingTime / 60);
-        int milliseconds = (int) (timer.remainingTime * 1000 % 1000);
+        float remainingTime = timer.remainingTime;
+
+        if (remainingTime < 0) {
+            remainingTime = 0;
+        }
+
+        int seconds = (int) (remainingTime % 60);
+        int minutes = (int) (remainingTime / 60);
+        int milliseconds = (int) (remainingTime * 1000 % 1000);
 
         timerText.text = $"{minutes:00}:{seconds:00}:{milliseconds:000}";
     }

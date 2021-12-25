@@ -1,15 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class SafeZone : MonoBehaviour
-{
+public class SafeZone : MonoBehaviour {
+    [SerializeField] private TurretsController turretsController;
+
     private void OnTriggerEnter(Collider other) {
-        RedLightGreenLightBotController bot = other.GetComponent<RedLightGreenLightBotController>();
+        Character character = other.GetComponent<Character>();
 
-        if (bot != null) {
-            bot.safetyState = SafetyState.Safe;
+        if (character != null) {
+            if (character is RedLightGreenLightBotController) {
+                RedLightGreenLightBotController bot = (RedLightGreenLightBotController) character;
+                bot.safetyState = SafetyState.Safe;
+                StartCoroutine(CrStopBotFromRunning(bot));
+            }
 
-            StartCoroutine(CrStopBotFromRunning(bot));
+            turretsController.RemoveTargetFromList(character);
         }
     }
 

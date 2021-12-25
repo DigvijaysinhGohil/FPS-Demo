@@ -4,8 +4,9 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour{
     private bool hasTimerStarted = false;
-    private float duration;
     private float counter;
+    
+    [SerializeField] private float duration;
     public float remainingTime;
 
     [Space] public UnityEvent OnTimerExpire;
@@ -22,6 +23,11 @@ public class Timer : MonoBehaviour{
         }
     }
 
+    public void StartTimer(){
+        counter = Time.time;
+        hasTimerStarted = true;
+    }
+    
     public void StartTimer(float duration){
         this.duration = duration;
         counter = Time.time;

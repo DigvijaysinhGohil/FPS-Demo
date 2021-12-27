@@ -16,6 +16,7 @@ public class RedLightGreenLightBotController : Character {
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.mass = mass;
         safetyState = SafetyState.Unsafe;
+        runSpeed = Random.Range(1.5f, 2f);
 
         lightsController.OnRedLightStarted.AddListener(HandleLightChange);
         lightsController.OnGreenLightStarted.AddListener(HandleLightChange);
@@ -26,7 +27,7 @@ public class RedLightGreenLightBotController : Character {
         lightsController.OnGreenLightStarted.RemoveListener(HandleLightChange);
     }
 
-    protected void FixedUpdate() {
+    protected override void FixedUpdate() {
         if (state != CharacterState.Dead) {
             base.FixedUpdate();
             Run();

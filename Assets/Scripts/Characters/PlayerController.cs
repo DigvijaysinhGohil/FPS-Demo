@@ -35,7 +35,7 @@ public class PlayerController : Character {
         inputControls.Player.Disable();
     }
 
-    protected void FixedUpdate() {
+    protected override void FixedUpdate() {
         if (state != CharacterState.Dead) {
             base.FixedUpdate();
 

@@ -1,8 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SafeZone : MonoBehaviour {
     [SerializeField] private TurretsController turretsController;
+
+    [Space] public UnityEvent OnWin;
 
     private void OnTriggerEnter(Collider other) {
         Character character = other.GetComponent<Character>();
@@ -13,6 +17,9 @@ public class SafeZone : MonoBehaviour {
                 bot.safetyState = SafetyState.Safe;
                 StartCoroutine(CrStopBotFromRunning(bot));
             }
+            else if (character is PlayerController) {
+                StartCoroutine(CrPlayerWon());
+            }
 
             turretsController.RemoveTargetFromList(character);
         }
@@ -21,5 +28,11 @@ public class SafeZone : MonoBehaviour {
     private IEnumerator CrStopBotFromRunning(RedLightGreenLightBotController bot) {
         yield return new WaitForSecondsRealtime(1f);
         bot.state = CharacterState.Idle;
+    }
+
+    private IEnumerator CrPlayerWon() {
+        yield return new WaitForSecondsRealtime(1f);
+
+        OnWin?.Invoke();
     }
 }

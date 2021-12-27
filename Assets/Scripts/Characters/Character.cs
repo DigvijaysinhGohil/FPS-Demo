@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour {
     private const int MAX_HEALTH = 100;
@@ -15,7 +16,9 @@ public class Character : MonoBehaviour {
     
     [Space, SerializeField] protected CharacterAnimationController animationController;
 
-    protected void FixedUpdate() {
+    [Space] public UnityEvent OnDeath;
+
+    protected virtual void FixedUpdate() {
         Look();
     }
 
@@ -28,5 +31,6 @@ public class Character : MonoBehaviour {
     public virtual void Die() {
         state = CharacterState.Dead;
         animationController.Death();
+        OnDeath?.Invoke();
     }
 }

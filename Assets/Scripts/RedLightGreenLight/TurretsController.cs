@@ -15,6 +15,8 @@ public class TurretsController : MonoBehaviour {
 
     [Space] public List<Character> targets;
 
+    [Space, SerializeField] private TurretAudioController turretAudio;
+
     private void Awake() {
         random = new System.Random();
         targets = new List<Character>(new List<Character>(FindObjectsOfType<Character>()).OrderBy(target => random.Next()));
@@ -46,8 +48,10 @@ public class TurretsController : MonoBehaviour {
         lightTimer.StopTimer();
 
         if (player.state == CharacterState.Run || player.state == CharacterState.Walk) {
-            if (targets.Contains(player))
+            if (targets.Contains(player)) {
+                turretAudio.ShootSfx();
                 player.Die();
+            }
         }
 
         lightTimer.ResumeTimer();
@@ -64,6 +68,7 @@ public class TurretsController : MonoBehaviour {
         Character[] targetsToKill = targets.Where(target => target.state != CharacterState.Idle).ToArray();
 
         foreach (Character character in targetsToKill) {
+            turretAudio.ShootSfx();
             character.Die();
 
             yield return new WaitForSeconds(Random.Range(.5f, 1f));
@@ -76,16 +81,17 @@ public class TurretsController : MonoBehaviour {
     public void KillAll() {
         player = null;
         StopAllCoroutines();
-        StartCoroutine(CrkillAll());
+        StartCoroutine(CrKillAll());
     }
 
-    private IEnumerator CrkillAll() {
+    private IEnumerator CrKillAll() {
         yield return new WaitForSeconds(Random.Range(minThreshold, maxThreshold));
         lightTimer.StopTimer();
 
         Character[] targetsToKill = targets.ToArray();
 
         foreach (Character character in targetsToKill) {
+            turretAudio.ShootSfx();
             character.Die();
 
             yield return new WaitForSeconds(Random.Range(.5f, 1f));

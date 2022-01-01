@@ -29,6 +29,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Audio" t="Include">
+            <e p="CharacterAudioController.cs" t="Include" />
             <e p="TurretAudioController.cs" t="Include" />
           </e>
           <e p="Characters" t="Include">
@@ -46,7 +47,9 @@
             <e p="Timer.cs" t="Include" />
           </e>
           <e p="LeanTween" t="Include">
+            <e p="ButtonEffect.cs" t="Include" />
             <e p="FadeIn.cs" t="Include" />
+            <e p="SceneTransitionEffect.cs" t="Include" />
           </e>
           <e p="RedLightGreenLight" t="Include">
             <e p="CountDownTextVisuals.cs" t="Include" />

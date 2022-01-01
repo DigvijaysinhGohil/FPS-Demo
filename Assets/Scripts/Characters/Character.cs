@@ -13,8 +13,9 @@ public class Character : MonoBehaviour {
     protected float mass = 50;
 
     public CharacterState state;
-    
+
     [Space, SerializeField] protected CharacterAnimationController animationController;
+    [SerializeField] protected CharacterAudioController audioController;
 
     [Space] public UnityEvent OnDeath;
 
@@ -31,6 +32,8 @@ public class Character : MonoBehaviour {
     public virtual void Die() {
         state = CharacterState.Dead;
         animationController.Death();
+        audioController.RunSfx(false);
+        audioController.DeathSfx();
         OnDeath?.Invoke();
     }
 }

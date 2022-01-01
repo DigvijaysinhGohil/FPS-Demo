@@ -45,13 +45,15 @@ public class PlayerController : Character {
             else {
                 Walk();
             }
+            
+            audioController.RunSfx(state == CharacterState.Run);
         }
     }
 
     private void ReadMoveDelta(InputAction.CallbackContext context) {
         if (state == CharacterState.Dead)
             return;
-        
+
         Vector2 delta = context.ReadValue<Vector2>();
         moveDelta.x = delta.x;
         moveDelta.z = delta.y;
@@ -77,6 +79,7 @@ public class PlayerController : Character {
             float direction = walkForce.z > 0 ? 1 : -1;
             animationController.Walk(direction);
         }
+
         rigidBody.AddRelativeForce(walkForce, ForceMode.VelocityChange);
     }
 
@@ -86,6 +89,7 @@ public class PlayerController : Character {
         runForce.z = moveDelta.z * mass * runSpeed * Time.fixedDeltaTime;
         float runForceSqrMagnitude = runForce.sqrMagnitude;
         state = runForceSqrMagnitude > 0 ? CharacterState.Run : CharacterState.Idle;
+
         if (state == CharacterState.Idle) {
             animationController.Idle();
         }
@@ -93,10 +97,14 @@ public class PlayerController : Character {
             float direction = runForce.z > 0 ? 1 : -1;
             animationController.Run(direction);
         }
+
         rigidBody.AddRelativeForce(runForce, ForceMode.VelocityChange);
     }
 
     protected override void Look() {
+        if (eyesTransform.parent == head)
+            return;
+        
         Quaternion newRotation = Quaternion.Euler(lookDelta.x, 0, 0);
         eyesTransform.localRotation = Quaternion.Slerp(eyesTransform.localRotation, newRotation, lerpSpeed);
         newRotation = Quaternion.Euler(0, lookDelta.y, 0);

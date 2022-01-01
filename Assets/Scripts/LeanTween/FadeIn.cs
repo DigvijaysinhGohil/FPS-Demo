@@ -78,7 +78,6 @@ public class FadeInEditor : Editor {
 
         EditorGUILayout.Space(5);
         SerializedProperty spawnEvent = serializedObject.FindProperty("OnTweenComplete");
-        EditorGUIUtility.LookLikeControls();
         EditorGUILayout.PropertyField(spawnEvent);
         serializedObject.ApplyModifiedProperties();
     }

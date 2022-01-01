@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -31,6 +32,7 @@ public class RedLightGreenLightBotController : Character {
         if (state != CharacterState.Dead) {
             base.FixedUpdate();
             Run();
+            audioController.RunSfx(state == CharacterState.Run);
         }
     }
 

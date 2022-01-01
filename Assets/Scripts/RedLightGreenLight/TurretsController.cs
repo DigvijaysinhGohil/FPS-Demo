@@ -4,6 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 public class TurretsController : MonoBehaviour {
+    private bool hasCrKillTargetRunning;
+    
     private System.Random random;
     private Character player;
 
@@ -51,6 +53,7 @@ public class TurretsController : MonoBehaviour {
             if (targets.Contains(player)) {
                 turretAudio.ShootSfx();
                 player.Die();
+                RemoveTargetFromList(player);
             }
         }
 
@@ -58,14 +61,18 @@ public class TurretsController : MonoBehaviour {
     }
 
     private void KillTargets() {
+        if(hasCrKillTargetRunning)
+            return;
+        
         StartCoroutine(CrKillTargets());
     }
 
     private IEnumerator CrKillTargets() {
+        hasCrKillTargetRunning = true;
         yield return new WaitForSeconds(Random.Range(minThreshold, maxThreshold));
         lightTimer.StopTimer();
 
-        Character[] targetsToKill = targets.Where(target => target.state != CharacterState.Idle).ToArray();
+        Character[] targetsToKill = targets.Where(target => target.state != CharacterState.Idle && !(target is PlayerController)).ToArray();
 
         foreach (Character character in targetsToKill) {
             turretAudio.ShootSfx();
@@ -76,6 +83,7 @@ public class TurretsController : MonoBehaviour {
         }
 
         lightTimer.ResumeTimer();
+        hasCrKillTargetRunning = false;
     }
 
     public void KillAll() {
